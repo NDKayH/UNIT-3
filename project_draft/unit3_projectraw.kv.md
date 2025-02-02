@@ -1,3 +1,6 @@
+```.py
+
+
 #:kivy 2.0.0
 
 Screen:
@@ -13,3 +16,5 @@ Screen:
         icon_left: "avatar.png"
         icon_right: "close-circle-outline"
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+```
