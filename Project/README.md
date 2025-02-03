@@ -21,23 +21,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales conseq
 
 
 ## Success Criteria
-1. The GUI application has a signup and login system that shop staff can login with a username and password. 
-(Issue Tackled: “It is not clear who purchases materials or takes an order and handles money when recording on the paper”)
-2. The GUI application keeps track of the inventory of candle materials.
-(Issue Tackld: “Many materials run out due to a defective inventory list”)
-3. The GUI application keeps track of money of purchase for materials and orders from customers.
-(Issue Tackled: “Shop staff forget to record the material purchased and keeping records of inventory and money on paper leads to shop staff being more likely to make mistakes, and the balance of money doesn't match due to stealing by staff.”)
-4. The GUI application creates a system to create a candle.
-(Issue Tackled: “We need to make a candle with sustainable materials.”)
-5. The GUI application shows the description of each raw material when the client clicks the button.
-(Issue Tackled: “Shop staff can’t remember all the descriptions of materials.”)
-6. The GUI application automatically calculated the amount of purchase of materials next month depending on the inventory and also the popularity of the candle. 
-(Issue Tackled: “Since it is a new shop and due to the large number of customers, the popular materials run out quickly.”)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales consequat vulputate. Cras cursus vulputate massa non accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut a arcu ex. Proin in finibus nunc, in vehicula sapien. Duis finibus odio vitae dolor bibendum, in dignissim nisi suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae libero in sapien vulputate auctor.
+
 
 # Criteria B: Design
 
 ## System Diagram
-![system_diagram2.png](Project_md_image%2Fsystem_diagram2.png)
+####SYSTEM DIAGRAM***
+
 **Fig.2** shows the system diagram of the GUI application. I used Macbook Air computer as the development tool and Pycharm for the coding editor. 
 Inside the Pycharm, I have the `project.py`, `project_lib.py`, `project.kv`, and `project.db` files and database.
 Inside the database of `project.db` which uses sqlite3, I have table users, inventory, orders, order_history, purchases and ledger.
