@@ -10,30 +10,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales conseq
 
 Praesent ullamcorper orci odio, nec dignissim ante blandit vitae. Sed consequat tempor vestibulum. Nullam mollis egestas faucibus. Praesent at orci lacinia, molestie metus et, tempor erat. Cras eget nisl lacus. Duis tincidunt nibh at nisl gravida tempus. Maecenas sit amet odio pellentesque, dignissim augue sit amet, cursus libero. Etiam quis ante eu mi accumsan lacinia. In et nisl sit amet mauris aliquam mattis at in sapien. Sed tempus bibendum erat ut blandit.
 
-(see evidence of consultation in AppendixA)
+(see evidence of consultation in (AppendixA) SOMEWHERE IDFK)
 
 ## Proposed Solution
-Considering the client's requirements, a GUI (Graphical User Interface) application seems to be best option because it has clear visual which is easy to use.
-- mistakes on tracking money on paper
-    -> the application keeps track of money of purchase of materials and order by customers and calculate, profit, expenditure and balance by clicking a button(not number typing).
-- mistakes on tracking inventory on paper
-    ->the application keeps track of the number of materials which changes by the purchase of materials and order by customer. It also shows what kind of materials are lacking. 
-- memorization of description of materials
-    ->the application shows the description of each raw material when staff click the button.
-- running out of inventory due to a lack of analysis of inventory and popularity of candle
-    -> the application automatically calculates the recommended amount of refinement based on the sale of the calculation.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales consequat vulputate. Cras cursus vulputate massa non accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut a arcu ex. Proin in finibus nunc, in vehicula sapien. Duis finibus odio vitae dolor bibendum, in dignissim nisi suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae libero in sapien vulputate auctor.
+
 
 ## Tools of my solution
-By considering the requirements of the client, I decided to use a GUI (Graphical User Interface) application for the development. [^1]
-GUI application is a desktop application that doesn’t require an Internet connection. [^2]
-This allows strong security to protect from application hijacks and makes it easy to improve the application. [^3]
-Compared to the GLI (Command Line Interface) application, the GUI application has good visual elements, so people who are not familiar with programming can easily use it.
-For a programming language, I decided to use Python. [^4]
-Python includes a wide range of libraries and frameworks, so I can develop user interfaces, databases, and backend programs in one language. 
-Python is also a well-known language, so the client asks for further improvement from other developers to update the application in the future. 
-For the development, I needed a database to record data, and I chose SQLite as a database that provides a relational database management system. 
-I developed a desktop application that works well with SQLite which uses local data sources. We can set hash-check for SQLite database, so it ensures higher security different from the Google spreadsheet. 
-In addition, SQLite is faster than other files and more reliable.[^5]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales consequat vulputate. Cras cursus vulputate massa non accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut a arcu ex. Proin in finibus nunc, in vehicula sapien. Duis finibus odio vitae dolor bibendum, in dignissim nisi suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae libero in sapien vulputate auctor.
+
 
 ## Success Criteria
 1. The GUI application has a signup and login system that shop staff can login with a username and password. 
