@@ -1,4 +1,4 @@
-# 'secure_passowrd.py'
+# 'secure_passoword.py'
 
 ## Code
 ```.py
