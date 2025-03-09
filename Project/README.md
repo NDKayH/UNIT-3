@@ -21,7 +21,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales conseq
 
 ## Initial Interview with Client 
 
-# Transcript of First Interview
+### Transcript of First Interview
 
 Developer (Dev): All right, let’s start. This is our first interview for the project. You’re the owner of Fresh Bite Meal Prep, correct?
 
