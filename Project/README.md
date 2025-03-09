@@ -19,6 +19,48 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales conseq
 ## Tools of my solution
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales consequat vulputate. Cras cursus vulputate massa non accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut a arcu ex. Proin in finibus nunc, in vehicula sapien. Duis finibus odio vitae dolor bibendum, in dignissim nisi suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae libero in sapien vulputate auctor.
 
+## Initial Interview with Client 
+
+# Transcript of First Interview
+
+Developer (Dev): All right, let’s start. This is our first interview for the project. You’re the owner of Fresh Bite Meal Prep, correct?
+
+Client: Yes, that’s right. I own Fresh Bite Meal Prep. We provide healthy, pre-prepared meals for fitness enthusiasts.
+
+Dev: Great. So, what kind of application are you looking for?
+
+Client: I need a simple web and mobile application that allows me to manage orders and track deliveries. We don’t have physical restaurants; we operate from a central warehouse in Karuizawa and handle deliveries across the city.
+
+Dev: Got it. What are the core functionalities you’re looking for?
+
+Client: The app should allow customers to select meals, track orders, and have a management system for warehouse stock levels and ingredient inventory.
+
+Dev: So, you need an inventory management system for both fully prepared meals and ingredients?
+
+Client: Exactly. We also have a dedicated kitchen, so managing ingredient stock is important.
+
+Dev: Understood. What about deliveries?
+
+Client: We need route tracking and estimated delivery times for our drivers. Additionally, I’d like to include a customer feedback page.
+
+Dev: Do you want the app to be mobile-first?
+
+Client: Yes, most of our customers will use mobile devices.
+
+Dev: Okay, and will this be for your internal management only, or do customers need access as well?
+
+Client: Both. I need it for management, but customers should also be able to access it to place and track orders.
+Dev: So, you’ll need a login system. Would you prefer a single login page with different user roles, or separate login pages for customers and administrators?
+
+Client: I’m open to suggestions, but a single login page with role-based access would be ideal.
+
+Dev: That makes sense. Any other specific features you need?
+
+Client: No, I think that covers everything for now.
+
+Dev: Great. I have enough information to move forward. I’ll put together a detailed project plan.
+
+Client: Awesome! Looking forward to it.
 
 ## Success Criteria
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales consequat vulputate. Cras cursus vulputate massa non accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut a arcu ex. Proin in finibus nunc, in vehicula sapien. Duis finibus odio vitae dolor bibendum, in dignissim nisi suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae libero in sapien vulputate auctor.
