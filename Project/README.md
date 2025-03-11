@@ -198,7 +198,7 @@ The screen flow follow the arrows in the figfure.
 
 # Criteria C: Development
 
-Creating my Database:
+## Creating my Database (Success Criteria #1):
 
 To meet my client’s requirements for an app with inventory management, order tracking, and user data storage, I chose an SQL (specifically SQLite3) for the relational database. It is serverless and with seamless Python integration it seemed ideal for our GUI application. 
 
