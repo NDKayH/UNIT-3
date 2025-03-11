@@ -23,44 +23,66 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales conseq
 
 This interview was conducted and the transcript was compiled by AI, so beware of any discrepancies. The original audio file is sharable however. 
 
-Developer (Dev): All right, let’s start. This is our first interview for the project. You’re the owner of Fresh Bite Meal Prep, correct?
+**Developer (Dev):**  
+All right, let’s start. This is our first interview for the project. You’re the owner of Fresh Bite Meal Prep, correct?
 
-Client: Yes, that’s right. I own Fresh Bite Meal Prep. We provide healthy, pre-prepared meals for fitness enthusiasts.
+**Client:**  
+Yes, that’s right. I own Fresh Bite Meal Prep. We provide healthy, pre-prepared meals for fitness enthusiasts.
 
-Dev: Great. So, what kind of application are you looking for?
+**Dev:**  
+Great. So, what kind of application are you looking for?
 
-Client: I need a simple web and mobile application that allows me to manage orders and track deliveries. We don’t have physical restaurants; we operate from a central warehouse in Karuizawa and handle deliveries across the city.
+**Client:**  
+I need a simple web and mobile application that allows me to manage orders and track deliveries. We don’t have physical restaurants; we operate from a central warehouse in Karuizawa and handle deliveries across the city.
 
-Dev: Got it. What are the core functionalities you’re looking for?
+**Dev:**  
+Got it. What are the core functionalities you’re looking for?
 
-Client: The app should allow customers to select meals, track orders, and have a management system for warehouse stock levels and ingredient inventory.
+**Client:**  
+The app should allow customers to select meals, track orders, and have a management system for warehouse stock levels and ingredient inventory.
 
-Dev: So, you need an inventory management system for both fully prepared meals and ingredients?
+**Dev:**  
+So, you need an inventory management system for both fully prepared meals and ingredients?
 
-Client: Exactly. We also have a dedicated kitchen, so managing ingredient stock is important.
+**Client:**  
+Exactly. We also have a dedicated kitchen, so managing ingredient stock is important.
 
-Dev: Understood. What about deliveries?
+**Dev:**  
+Understood. What about deliveries?
 
-Client: We need route tracking and estimated delivery times for our drivers. Additionally, I’d like to include a customer feedback page.
+**Client:**  
+We need route tracking and estimated delivery times for our drivers. Additionally, I’d like to include a customer feedback page.
 
-Dev: Do you want the app to be mobile-first?
+**Dev:**  
+Do you want the app to be mobile-first?
 
-Client: Yes, most of our customers will use mobile devices.
+**Client:**  
+Yes, most of our customers will use mobile devices.
 
-Dev: Okay, and will this be for your internal management only, or do customers need access as well?
+**Dev:**  
+Okay, and will this be for your internal management only, or do customers need access as well?
 
-Client: Both. I need it for management, but customers should also be able to access it to place and track orders.
-Dev: So, you’ll need a login system. Would you prefer a single login page with different user roles, or separate login pages for customers and administrators?
+**Client:**  
+Both. I need it for management, but customers should also be able to access it to place and track orders.
 
-Client: I’m open to suggestions, but a single login page with role-based access would be ideal.
+**Dev:**  
+So, you’ll need a login system. Would you prefer a single login page with different user roles, or separate login pages for customers and administrators?
 
-Dev: That makes sense. Any other specific features you need?
+**Client:**  
+I’m open to suggestions, but a single login page with role-based access would be ideal.
 
-Client: No, I think that covers everything for now.
+**Dev:**  
+That makes sense. Any other specific features you need?
 
-Dev: Great. I have enough information to move forward. I’ll put together a detailed project plan.
+**Client:**  
+No, I think that covers everything for now.
 
-Client: Awesome! Looking forward to it.
+**Dev:**  
+Great. I have enough information to move forward. I’ll put together a detailed project plan.
+
+**Client:**  
+Awesome! Looking forward to it.
+
 
 ## Success Criteria
 
