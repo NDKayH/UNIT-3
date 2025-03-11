@@ -284,19 +284,22 @@ def initialize_food_database():
 
 ```python
 def initialize_orders_database():
-   db = DatabaseManager(name=DB_PATH)
-   query = """
-       CREATE TABLE IF NOT EXISTS orders (
-           id INTEGER PRIMARY KEY AUTOINCREMENT,
-           customer_username TEXT NOT NULL,
-           order_details TEXT NOT NULL,
-           status TEXT NOT NULL,
-           address TEXT,
-           bank_info TEXT,
-           estimated_time INTEGER
-       );
-   """
-   db.run_save(query)
+    db = DatabaseManager(name=DB_PATH)
+    query = """
+        CREATE TABLE IF NOT EXISTS orders (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            customer_username TEXT NOT NULL,
+            order_details TEXT NOT NULL,
+            status TEXT NOT NULL,
+            address TEXT,
+            bank_info TEXT
+        );
+    """
+    db.run_save(query)
+    try:
+        db.run_save("ALTER TABLE orders ADD COLUMN estimated_time INTEGER")
+    except Exception as e:
+        print("Estimated_time column might already exist:", e)
 ```
 
 ## Feedback (Form):
@@ -457,6 +460,21 @@ If validation **passes**, then the system:
 ## Take Order (Create candle) (Success Criteria 2, 4)
 To meet the success criteria 4 about the creation of candle, I made three pages to take order and make candle successfully.
 This order process divided into three pages `TakeOrderScreen`, `CheckScreen`, `SuccessOrderScreen`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### TakeOrderScreen
 ```.py
