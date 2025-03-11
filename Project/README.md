@@ -197,50 +197,59 @@ The screen flow follow the arrows in the figfure.
 
 
 # Criteria C: Development
-## Create  Database
-As a requirement from the client about the record of the order of candle and money tracking, database is needed to achieve this goal.
-Therefore, I decided to use sqlite3 relational database to store the data with relations to apply stored data in many ways.
 
-File from: `project_lib.py`
-```.py
-import sqlite3
-class DatabaseWorker:
-    def __init__(self, name:str):
-        self.name_db = name
-        # Step1: Create a connection to the file
-        self.connection =  sqlite3.connect(self.name_db)
-        self.cursor = self.connection.cursor()
-        
-   def run_query(self, query:str):
-    self.cursor.execute(query) # run query
-    self.connection.commit() # save changes
-    
-    def search(self, query:str, multiple=False):
-        results = self.cursor.execute(query)
-        if multiple:
-            return results.fetchall() # return multiple rows in a list
-        return results.fetchone() # return single value
+Creating my Database:
 
-    def search_variable(self, query:str, *args, multiple=False):
-        results = self.cursor.execute(query, args)
-        if multiple:
-            return results.fetchall() # return multiple rows in a list
-        return results.fetchone() # return single value
+To meet my client’s requirements for an app with inventory management, order tracking, and user data storage, I chose an SQL (specifically SQLite3) for the relational database. It is serverless and with seamless Python integration it seemed ideal for our GUI application. 
 
+In `my_lib.py`, I imported the module `sqlite3` so I would be able to create an SQLite3 database. Then I created a `DatabaseManager` class that is responsible for all database operations. This class contains functions used numerous times in my main `project3.py` file.
+
+```python
+class DatabaseManager:
+   def __init__(self, name: str):
+       self.connection = sqlite3.connect(name)
+       self.cursor = self.connection.cursor()
+
+
+   def search(self, query, params=()):
+       result = self.cursor.execute(query, params).fetchall()
+       return result
+
+
+   def close(self):
+       self.connection.close()
+
+
+   def run_save(self, query, params=()):
+       self.cursor.execute(query, params)
+       self.connection.commit()
 ```
-First, I imported the module `sqlite3` to obtain the module to create sqlite3 database. 
-I created the class `DatabaseWorker` to connect database and use it in the main python file `project.py`.
-I also created functions, `run_query` to run the query code from the python file, `search` and `search_variable` to search the data in the tables.
 
-File from: `project.py`
-```.py
-from project_lib import DatabaseWorker, make_hash, check_hash
+These methods each allow my application to interact with the database without me needing to handle any low-level SQLite3 commands directly from within the main project file. 
 
-db_name = "project_db"
-db_connection = DatabaseWorker(name=db_name)
-db_connection.create()
+In my `project3.py` file, the main one in this project, I imported the os library so that I would be able to locate my main_db.sql database file directly using its exact path, as this was a problem previously where when initializing the database and its contents in my start sequence of my app I had my database file spawn outside of my project folder which was something I didn’t want to do for the sake of organization. 
+
+```python
+import os
+
+DB_PATH = os.path.join("/Users/REDACTED/UWCISAK/Classwork3/Project_3_Real", "main_db.sql")
 ```
-By importing the `DatabaseWorker` from the file `project_lib.py`, I created the database called `project_db` and variable `db_connection` to connect with the database.
+
+Shown here is my `project3.py` file, where I initialize the necessary tables using the `”CREATE TABLE IF NOT EXISTS”` statements. For example, the user table is created:
+
+```python
+def initialize_user_database():
+   db = DatabaseManager(name=DB_PATH)
+   create_table_query = """
+       CREATE TABLE IF NOT EXISTS user (
+           id INTEGER PRIMARY KEY AUTOINCREMENT,
+           username TEXT NOT NULL UNIQUE,
+           email TEXT NOT NULL UNIQUE,
+           password TEXT NOT NULL,
+           role TEXT NOT NULL
+       );
+   """
+```
 
 I created 6 tables in the case of these tables are not existed.
 
