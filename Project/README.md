@@ -101,9 +101,6 @@ Now, based on the initial interview I compiled a set of success criteria in orde
 6. **The application is optimized for mobile usage, ensuring responsiveness and a user-friendly experience.**  
    *Issue Addressed: “An unresponsive, poor unintuitive application decreases user satisfaction.”*
 
-7. **The Kivy application codebase is developed using Python with an object-oriented programming approach (OOP), ensuring that it is modular, reusable and scalable for any potential enhancements and client needs.**  
-   *Issue Addressed: "A monolithic, non-modular codebase that will be hard to maintain and change in the future."*
-
 ---
 
 # Criteria B: Design
