@@ -112,28 +112,16 @@ Now, based on the initial interview I compiled a set of success criteria in orde
 Inside the Visual Studio Code, I have the `project_3.py`, `secure_password.py`, `my_lib.kv`, and `main_db.sql` files and database.
 Inside the database of `main_db.sql` which uses sqlite3, I have table users, food_items, inventory, orders, and purchases. 
 
-## ER Diagram
-![ER_diagram.jpg](Project_md_image%2FER_diagram.jpg)
-**Fig3** shows the ER diagram of the database `project.db`. 
-The database has 6 tables, users, inventory, orders, order_history, purchases and ledger.
-The rectangle shapes shows the name of the table and the circle which connected to each rectangle shows the attributes in the table.
-Primary key of each table is showed with underline.
-Table user connected to the table orders and purchases by one-to-many relationship because one user can make many orders.
-Table orders has one-to-one relationship with the table order_history because one each orde has each order records.
-Table orders and purchases are connected with ledger as one-to-one relationship because each order and purchases make the record in the ledger.
-Table orders and purchases are also connected to the table inventory as one-to-many relationship because one order contains several ingredients which affects the number of stock in the inventory.
+
+
+
 
 ## UML Diagram
-![UML_diagram.jpg](Project_md_image%2FUML_diagram.jpg)
+![project3_UML diagram](https://github.com/user-attachments/assets/62bf2320-9cad-479a-88bc-65f58f44b13f)
+
 **Fig4** shows the UML diagram of the GUI application.
-There are 13 classes and all the classes gets attributes from the kv file. One class receive MDApp as an attribute and others receive MDScreen as an attribute.
 Each of the class name is the same as the names in the kv file.
 
-
-## Wireframe
-![wire_frame2.png](Project_md_image%2Fwire_frame2.png)
-**Fig5** shows the wireframe of the GUI application. 
-The screen flow follow the arrows in the figfure.
 
 ## Flow Diagrams
 ### Screen Change
