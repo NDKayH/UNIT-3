@@ -117,8 +117,8 @@ Inside the database of `main_db.sql` which uses sqlite3, I have table users, foo
 
 
 ## UML Diagram
-![project3_UML diagram](https://github.com/user-attachments/assets/62bf2320-9cad-479a-88bc-65f58f44b13f)
 
+![main_uml](https://github.com/user-attachments/assets/84e393db-dc9d-4a46-b311-0609e048490a)
 **Fig4** shows the UML diagram of the GUI application.
 Each of the class name is the same as the names in the kv file.
 
