@@ -63,8 +63,30 @@ Dev: Great. I have enough information to move forward. I’ll put together a det
 Client: Awesome! Looking forward to it.
 
 ## Success Criteria
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales consequat vulputate. Cras cursus vulputate massa non accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut a arcu ex. Proin in finibus nunc, in vehicula sapien. Duis finibus odio vitae dolor bibendum, in dignissim nisi suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae libero in sapien vulputate auctor.
 
+Now, based on the initial interview I compiled a set of success criteria in order of importance (1 being the most important and 5 being the least). 
+
+1. **Kivy application must use an SQL Database to store all relevant app information, such as registered users with several roles (i.e. Administrator, Customer) and be editable depending on the task being attempted (storing order information, editing listed items).**
+
+2. **Kivy application must include a login page with access to a separate section allowing role-based access control for customers and administrators (both managers and employees) who can access relevant functionalities.**  
+   *Issue Addressed: "Difficulty in distinguishing between admin and customer functionality leading to potential misuse or access errors."*
+
+3. **Kivy application must include a comprehensive management dashboard for administrator users that enables them to monitor and update inventory levels for both ingredients and fully prepared meals.**  
+   *Issue Addressed: "Inadequate inventory management which causes ingredient shortages and overstocking."*
+
+4. **Kivy app must include integrated progress tracking with estimated delivery times to assist delivery drivers.**  
+   *Issue Addressed: "Delays in delivery and route mismanagement resulting in customer unhappiness and operational inefficiencies."*
+
+5. **App must include a dedicated customer feedback section where users can input feedback and administrators can access it on the Admin-Dashboard page.**  
+   *Issue Addressed: "Lack of a formal feedback system, because of which the company is unable to address customer problems effectively."*
+
+6. **The application is optimized for mobile usage, ensuring responsiveness and a user-friendly experience.**  
+   *Issue Addressed: “An unresponsive, poor unintuitive application decreases user satisfaction.”*
+
+7. **The Kivy application codebase is developed using Python with an object-oriented programming approach (OOP), ensuring that it is modular, reusable and scalable for any potential enhancements and client needs.**  
+   *Issue Addressed: "A monolithic, non-modular codebase that will be hard to maintain and change in the future."*
+
+---
 
 # Criteria B: Design
 
