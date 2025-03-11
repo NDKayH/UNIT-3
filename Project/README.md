@@ -124,13 +124,13 @@ Each of the class name is the same as the names in the kv file.
 
 
 ## Flow Diagrams
-### Screen Change
-![Screen_change.jpg](Project_md_image%2FScreen_change.jpg)
-**Fig6** shows the flow diagram of the screen change function.
+### Registration
+![Login_flow.jpg](Project_md_image%2FLogin_flow.jpg)
+**Fig6** shows the flow diagram of the registration process.
 
 ### Login
-![Login_flow.jpg](Project_md_image%2FLogin_flow.jpg)
-**Fig7** shows the flow diagram of the login function.
+![Screen_change.jpg](Project_md_image%2FScreen_change.jpg)
+**Fig5** shows the flow diagram of the screen login process.
 
 ### Purchase Candle
 ![Purchase.jpg](Project_md_image%2FPurchase.jpg)
