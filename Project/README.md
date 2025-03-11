@@ -109,11 +109,11 @@ Now, based on the initial interview I compiled a set of success criteria in orde
 # Criteria B: Design
 
 ## System Diagram
-####SYSTEM DIAGRAM***
+![project3_system_diagram](https://github.com/user-attachments/assets/30d295fa-5075-41df-9392-b97d5ed29892)
 
-**Fig.2** shows the system diagram of the GUI application. I used Macbook Air computer as the development tool and Visual Studio Code as my designated coding editor. 
+**Fig.2** shows the system diagram of the Kivy-Based GUI application. I used M3 Macbook Air 13" computer my development tool and Visual Studio Code as my designated coding editor. 
 
-Inside the Visual Studio Code, I have the `project_3.py`, `secure_password.py`, `my_li .kv`, and `main_db.sql` files and database.
+Inside the Visual Studio Code, I have the `project_3.py`, `secure_password.py`, `my_lib.kv`, and `main_db.sql` files and database.
 Inside the database of `main_db.sql` which uses sqlite3, I have table users, food_items, inventory, orders, and purchases. 
 
 ## ER Diagram
