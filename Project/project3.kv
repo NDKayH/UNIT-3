@@ -1,0 +1,859 @@
+#:import dp kivy.metrics.dp
+
+ScreenManager:
+    LoginScreen:
+    RegisterScreen:
+    AdminLoginScreen:
+    HomeScreen:
+    CustomerHomeScreen:
+    MealSelectionScreen:
+    MealDetailScreen:
+    OrderCheckoutScreen:
+    OrderTrackingScreen:
+    AdminDashboardScreen:
+    OrderManagementScreen:
+    InventoryManagementScreen:
+    DeliveryManagementScreen:
+    DriverDashboardScreen:
+    DeliveryDetailScreen:
+    FeedbackScreen:
+    AdminFeedbackScreen:
+    ProfileScreen:
+    OrderDetailScreen:
+    UpdateInventoryScreen:
+
+<LoginScreen>:
+    name: "login"
+    FloatLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDCard:
+            size_hint: None, None
+            size: dp(350), dp(500)
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            elevation: 12
+            padding: dp(20)
+            spacing: dp(20)
+            orientation: "vertical"
+            MDLabel:
+                text: "Welcome Back!"
+                halign: "center"
+                font_style: "H4"
+                theme_text_color: "Primary"
+            MDLabel:
+                text: "Please log in to continue"
+                halign: "center"
+                font_style: "Subtitle1"
+                theme_text_color: "Secondary"
+            MDTextField:
+                id: user
+                hint_text: "Username or Email"
+                mode: "rectangle"
+                icon_right: "account"
+                size_hint_y: None
+                height: dp(50)
+            MDTextField:
+                id: login_password
+                hint_text: "Password"
+                mode: "rectangle"
+                password: True
+                icon_right: "lock"
+                size_hint_y: None
+                height: dp(50)
+            MDRaisedButton:
+                text: "Login"
+                pos_hint: {"center_x": 0.5}
+                on_release: root.try_login()
+            MDTextButton:
+                text: "Create an Account"
+                pos_hint: {"center_x": 0.5}
+                on_release: root.manager.current = "register"
+        MDFloatingActionButton:
+            icon: "account-cog"
+            md_bg_color: app.theme_cls.primary_color
+            size_hint: None, None
+            size: dp(50), dp(50)
+            pos_hint: {"right": 0.95, "top": 0.95}
+            on_release: root.manager.current = "admin_login"
+
+<RegisterScreen>:
+    name: "register"
+    FloatLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        MDCard:
+            size_hint: None, None
+            size: dp(370), dp(550)
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            elevation: 12
+            padding: dp(20)
+            spacing: dp(15)
+            orientation: "vertical"
+            MDLabel:
+                text: "Create Account"
+                halign: "center"
+                font_style: "H4"
+                theme_text_color: "Primary"
+            MDTextField:
+                id: uname
+                hint_text: "Username"
+                mode: "rectangle"
+                icon_right: "account"
+                size_hint_y: None
+                height: dp(50)
+            MDTextField:
+                id: email
+                hint_text: "Email"
+                mode: "rectangle"
+                icon_right: "email"
+                size_hint_y: None
+                height: dp(50)
+            MDTextField:
+                id: passwd
+                hint_text: "Password"
+                mode: "rectangle"
+                password: True
+                icon_right: "lock"
+                size_hint_y: None
+                height: dp(50)
+            MDTextField:
+                id: passwd_check
+                hint_text: "Confirm Password"
+                mode: "rectangle"
+                password: True
+                icon_right: "lock-check"
+                size_hint_y: None
+                height: dp(50)
+            BoxLayout:
+                orientation: "vertical"
+                canvas.before:
+                    Rectangle:
+                        source: "fresh_bite.png"
+                        size: self.size
+                        pos: self.pos
+                size_hint_y: None
+                height: dp(40)
+                spacing: dp(10)
+                MDRaisedButton:
+                    text: "Submit"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.try_register()
+                MDRaisedButton:
+                    text: "Cancel"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "login"
+
+<AdminLoginScreen>:
+    name: "admin_login"
+    FloatLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        MDCard:
+            size_hint: None, None
+            size: dp(350), dp(500)
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            elevation: 12
+            padding: dp(20)
+            spacing: dp(20)
+            orientation: "vertical"
+            MDLabel:
+                text: "Admin Login"
+                halign: "center"
+                font_style: "H4"
+                theme_text_color: "Primary"
+            MDTextField:
+                id: admin_user
+                hint_text: "Admin Username"
+                mode: "rectangle"
+                icon_right: "account"
+                size_hint_y: None
+                height: dp(50)
+            MDTextField:
+                id: admin_passwd
+                hint_text: "Password"
+                mode: "rectangle"
+                password: True
+                icon_right: "lock"
+                size_hint_y: None
+                height: dp(50)
+            MDRaisedButton:
+                text: "Login"
+                pos_hint: {"center_x": 0.5}
+                on_release: root.try_admin_login()
+            MDRaisedButton:
+                text: "Back to User Login"
+                pos_hint: {"center_x": 0.5}
+                on_release: root.manager.current = "login"
+
+<HomeScreen>:
+    name: "home"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Home"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(300), dp(200)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                MDLabel:
+                    text: "Welcome to Fresh Bite Meal Prep!"
+                    halign: "center"
+                    font_style: "H5"
+                MDRaisedButton:
+                    text: "Customer Dashboard"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.go_to_customer_dashboard()
+
+<CustomerHomeScreen>:
+    name: "customer_home"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Customer Home"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(320), dp(280)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                MDRaisedButton:
+                    text: "View Menu"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.view_menu()
+                MDRaisedButton:
+                    text: "Track Orders"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.track_orders()
+                MDRaisedButton:
+                    text: "Profile"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.view_profile()
+                MDRaisedButton:
+                    text: "Submit Feedback"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "feedback"
+                MDRaisedButton:
+                    text: "View Cart"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.view_cart()
+                MDRaisedButton:
+                    text: "Logout"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.logout()
+
+<MealSelectionScreen>:
+    name: "meal_selection"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Food Menu"
+            elevation: 10
+        ScrollView:
+            MDList:
+                id: food_list
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(150), dp(50)
+                pos_hint: {"center_x": 0.5, "y": 0.02}
+                elevation: 12
+                padding: dp(10)
+                MDRaisedButton:
+                    text: "Back"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "customer_home"
+
+<MealDetailScreen>:
+    name: "meal_detail"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Meal Details"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(300), dp(450)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(15)
+                orientation: "vertical"
+                MDLabel:
+                    id: food_name
+                    text: "Food Name"
+                    halign: "center"
+                    font_style: "H5"
+                MDLabel:
+                    id: food_description
+                    text: "Description"
+                    halign: "center"
+                    theme_text_color: "Secondary"
+                MDLabel:
+                    id: food_price
+                    text: "$0.00"
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDRaisedButton:
+                    text: "Add to Order"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.add_to_order()
+                MDRaisedButton:
+                    text: "Back to Menu"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "meal_selection"
+
+<OrderCheckoutScreen>:
+    name: "order_checkout"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Order Checkout"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(500)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(15)
+                orientation: "vertical"
+                ScrollView:
+                    MDList:
+                        id: order_list
+                MDLabel:
+                    id: total_label
+                    text: "Total: $0.00"
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDTextField:
+                    id: address
+                    hint_text: "Delivery Address"
+                    mode: "rectangle"
+                    icon_right: "home"
+                    size_hint_y: None
+                    height: dp(50)
+                MDTextField:
+                    id: bank_info
+                    hint_text: "Bank Info"
+                    mode: "rectangle"
+                    icon_right: "credit-card"
+                    size_hint_y: None
+                    height: dp(50)
+                MDRaisedButton:
+                    text: "Confirm Order"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.confirm_order()
+                MDRaisedButton:
+                    text: "Back"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "meal_detail"
+
+<OrderTrackingScreen>:
+    name: "order_tracking"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Order Tracking"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(250)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                ScrollView:
+                    MDList:
+                        id: order_list
+                MDRaisedButton:
+                    text: "Back"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "customer_home"
+
+<AdminDashboardScreen>:
+    name: "admin_dashboard"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Admin Dashboard"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(350)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                MDLabel:
+                    text: "Admin Dashboard"
+                    halign: "center"
+                    font_style: "H5"
+                MDRaisedButton:
+                    text: "Manage Orders"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "order_management"
+                MDRaisedButton:
+                    text: "Manage Inventory"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "inventory_management"
+                MDRaisedButton:
+                    text: "Manage Deliveries"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "delivery_management"
+                MDRaisedButton:
+                    text: "View Feedback"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "admin_feedback"
+                MDRaisedButton:
+                    text: "Back to Login"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "login"
+
+<OrderManagementScreen>:
+    name: "order_management"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Order Management"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(400)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                ScrollView:
+                    MDList:
+                        id: order_list
+                MDRaisedButton:
+                    text: "Back"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "admin_dashboard"
+
+<DeliveryManagementScreen>:
+    name: "delivery_management"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Delivery Management"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(300)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                ScrollView:
+                    MDList:
+                        id: delivery_list
+                MDRaisedButton:
+                    text: "Back"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "admin_dashboard"
+
+<DriverDashboardScreen>:
+    name: "driver_dashboard"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Driver Dashboard"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(300)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                ScrollView:
+                    MDList:
+                        id: driver_delivery_list
+                MDRaisedButton:
+                    text: "Back to Login"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "login"
+
+<DeliveryDetailScreen>:
+    name: "delivery_detail"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Delivery Details"
+            elevation: 10
+        ScrollView:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(400)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                MDLabel:
+                    id: order_id_label
+                    text: "Order ID: " + str(root.order_info.get('id', ''))
+                    halign: "center"
+                    font_style: "H6"
+                MDLabel:
+                    id: customer_label
+                    text: "Customer: " + str(root.order_info.get('customer', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDLabel:
+                    id: details_label
+                    text: "Details: " + str(root.order_info.get('order_details', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDLabel:
+                    id: address_label
+                    text: "Address: " + str(root.order_info.get('address', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDLabel:
+                    id: bank_label
+                    text: "Bank Info: " + str(root.order_info.get('bank_info', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDLabel:
+                    id: status_label
+                    text: "Status: " + str(root.order_info.get('status', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(10)
+            MDRaisedButton:
+                text: "Mark as Complete"
+                on_release: root.mark_as_complete()
+            MDRaisedButton:
+                text: "Back"
+                on_release: root.manager.current = "order_management"
+
+<FeedbackScreen>:
+    name: "feedback"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Feedback"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(300)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                MDTextField:
+                    id: feedback_input
+                    hint_text: "Enter your feedback here"
+                    mode: "rectangle"
+                    size_hint_y: None
+                    height: dp(100)
+                MDRaisedButton:
+                    text: "Submit Feedback"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.submit_feedback()
+                MDRaisedButton:
+                    text: "Back"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "customer_home"
+
+<AdminFeedbackScreen>:
+    name: "admin_feedback"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Feedback Review"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(400)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                ScrollView:
+                    MDList:
+                        id: feedback_list
+            MDRaisedButton:
+                text: "Back"
+                size_hint: None, None
+                size: dp(100), dp(50)
+                pos_hint: {"center_x": 0.5, "y": 0.05}
+                on_release: root.manager.current = "admin_dashboard"
+
+<ProfileScreen>:
+    name: "profile"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Profile"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(300)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                MDLabel:
+                    text: "Profile Screen"
+                    halign: "center"
+                    font_style: "H5"
+                MDRaisedButton:
+                    text: "Edit Profile"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: print("Editing Profile")
+                MDRaisedButton:
+                    text: "Back"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "customer_home"
+
+<OrderDetailScreen>:
+    name: "order_detail"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Order Details"
+            elevation: 10
+        ScrollView:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(400)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                MDLabel:
+                    id: order_id_label
+                    text: "Order ID: " + str(root.order_info.get('id', ''))
+                    halign: "center"
+                    font_style: "H6"
+                MDLabel:
+                    id: customer_label
+                    text: "Customer: " + str(root.order_info.get('customer', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDLabel:
+                    id: details_label
+                    text: "Details: " + str(root.order_info.get('order_details', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDLabel:
+                    id: address_label
+                    text: "Address: " + str(root.order_info.get('address', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDLabel:
+                    id: bank_label
+                    text: "Bank Info: " + str(root.order_info.get('bank_info', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDLabel:
+                    id: status_label
+                    text: "Status: " + str(root.order_info.get('status', ''))
+                    halign: "center"
+                    font_style: "Subtitle1"
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(10)
+            MDRaisedButton:
+                text: "Mark as Complete"
+                on_release: root.mark_as_complete()
+            MDRaisedButton:
+                text: "Back"
+                on_release: root.manager.current = "order_management"
+
+<InventoryManagementScreen>:
+    name: "inventory_management"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Inventory Management"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(300)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                ScrollView:
+                    MDList:
+                        id: inventory_list
+                MDRaisedButton:
+                    text: "Back"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.manager.current = "admin_dashboard"
+
+<UpdateInventoryScreen>:
+    name: "update_inventory"
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                source: "fresh_bite.png"
+                size: self.size
+                pos: self.pos
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Update Inventory"
+            elevation: 10
+        FloatLayout:
+            MDCard:
+                size_hint: None, None
+                size: dp(350), dp(300)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 12
+                padding: dp(20)
+                spacing: dp(10)
+                orientation: "vertical"
+                MDLabel:
+                    text: "Update Quantity for " + root.item_name
+                    halign: "center"
+                    font_style: "H6"
+                MDLabel:
+                    text: "Current Quantity: " + str(root.current_quantity)
+                    halign: "center"
+                    font_style: "Subtitle1"
+                MDTextField:
+                    id: new_quantity
+                    hint_text: "Enter new quantity"
+                    mode: "rectangle"
+                    size_hint_y: None
+                    height: dp(50)
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: dp(50)
+                    spacing: dp(10)
+                    MDRaisedButton:
+                        text: "Update"
+                        on_release: root.update_quantity()
+                    MDRaisedButton:
+                        text: "Cancel"
+                        on_release: root.manager.current = "inventory_management"
