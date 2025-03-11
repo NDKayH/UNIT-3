@@ -95,11 +95,10 @@ Now, based on the initial interview I compiled a set of success criteria in orde
 4. **Kivy app must include integrated progress tracking with estimated delivery times to assist delivery drivers.**  
    *Issue Addressed: "Delays in delivery and route mismanagement resulting in customer unhappiness and operational inefficiencies."*
 
-5. **App must include a dedicated customer feedback section where users can input feedback and administrators can access it on the Admin-Dashboard page.**  
-   *Issue Addressed: "Lack of a formal feedback system, because of which the company is unable to address customer problems effectively."*
+5. **The application is optimized for mobile usage, ensuring responsiveness and a user-friendly experience, and includes a dedicated customer feedback section where users can input feedback and administrators can access it on the Admin-Dashboard page.**  
+  *Issue Addressed: “An unresponsive, poor unintuitive application decreases user satisfaction” and “Lack of a formal feedback system, because of which the company is unable to address customer problems effectively.”*
 
-6. **The application is optimized for mobile usage, ensuring responsiveness and a user-friendly experience.**  
-   *Issue Addressed: “An unresponsive, poor unintuitive application decreases user satisfaction.”*
+6. 
 
 ---
 
