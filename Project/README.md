@@ -468,9 +468,10 @@ Next requirements are an **administrator’s dashboard** that allows for **compr
 
 ### Database Setup for Inventory Tracking:
 
-To **store and manage** the ingredient inventory data, I created a **dedicated table** within my `main_db.sql` **SQLite3 database**, as seen above in my database creation section. This ensures that the table **exists upon app startup** and it contains:  
-✔ The **names** of the ingredients  
-✔ The **quantity** available in stock  
+To **store and manage** the ingredient inventory data, I created a **dedicated table** within my `main_db.sql` **SQLite3 database**, as seen above in my database creation section. This ensures that the table **exists upon app startup** and it contains: 
+
+- The **names** of the ingredients  
+- The **quantity** available in stock  
 
 The reason for this inclusion was to remain **faithful to the client's goal** of ensuring that **preventable shortages and oversupply issues** for inventory are **mitigated** by a more **intuitive and partly automated system** of inventory management.  
 
@@ -520,9 +521,9 @@ class InventoryManagementScreen(MDScreen):
 ```
 
 ### **How This Works:**
-✔ **Retrieves** all **ingredients and their stock levels** from the database.  
-✔ **Displays** them dynamically in the **UI** (`InventoryManagementScreen`).  
-✔ Allows **admins to edit stock levels** when selecting an item in the UI.  
+- **Retrieves** all **ingredients and their stock levels** from the database.  
+- **Displays** them dynamically in the **UI** (`InventoryManagementScreen`).  
+- Allows **admins to edit stock levels** when selecting an item in the UI.  
 
 ---
 
@@ -554,25 +555,25 @@ class UpdateInventoryScreen(MDScreen):
 ```
 
 ### **How This Works:**  
-✔ The **admin inputs a new quantity** for an ingredient.  
-✔ **Data validation** ensures **only valid numbers** are entered.  
+- The **admin inputs a new quantity** for an ingredient.  
+- **Data validation** ensures **only valid numbers** are entered.  
 
 ```python
 except ValueError:
     print("Invalid quantity")
     return
 ```
-✔ The **database is updated** in real-time, preventing **incorrect stock tracking**.  
-✔ The inventory list **refreshes automatically**.  
+- The **database is updated** in real-time, preventing **incorrect stock tracking**.  
+- The inventory list **refreshes automatically**.  
 
 ---
 
 ## **Preventing Overstock & Shortages**  
 By integrating this **inventory management system**, my application **and the administrator** can:  
 
-✔ **Track inventory levels dynamically**  
-✔ **Prevent overstocking** by ordering only necessary ingredients  
-✔ **Prevent shortages** by allowing proactive restocking  
+- **Track inventory levels dynamically**
+- **Prevent overstocking** by ordering only necessary ingredients
+- **Prevent shortages** by allowing proactive restocking  
 
 This system **fully meets Success Criteria #3**, ensuring that the **administrator’s dashboard provides real-time inventory control** for better management of **ingredients and fully prepared meals**.
 
