@@ -328,24 +328,16 @@ def initialize_ingredients_database():
    """
    db.run_save(query)
 ```
-```
-Also, to calculate the balance, I created the trigger in the conosole of the database.
-```.py
--- trigger
-CREATE TRIGGER update_balance
-AFTER INSERT ON ledger
-FOR EACH ROW
-BEGIN
-    UPDATE ledger
-    SET balance = (
-        SELECT COALESCE(SUM(price), 0)
-        FROM ledger AS prev
-        WHERE (prev.date < NEW.date OR (prev.date = NEW.date AND prev.id < NEW.id))
-    ) + NEW.price
-    WHERE id = NEW.id;
-END;
-```
+
 As you can see, each table initializer uses `my_lib.py` in some capacity when starting my application, each using the `run_save(query)` function. 
+
+Each table is configured to address the application's unique requirements.
+
+1.  User Table: Having roles and user authentication segregated prevents unauthorized modification and gives administrators and customers varying levels of access.
+2.  Orders Table: Adding customer information, order details, and an `estimated_time` column makes it easy to track progress. This facilitates features such as order status updates.
+3.  Feedback Table: A separate feedback table ensures customer feedback can be stored and compared without influencing user or order data.
+4.  Food & Ingredients Tables: The separation of food items and inventory ingredients isolates menu listings from stock tracking to enable better inventory control.
+
 
 This query happens every time the table `ledger` is updated.
 I set the for loop which calculates the sum of the price column of the table.
