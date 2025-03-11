@@ -1,14 +1,12 @@
 
 # Unit3 Project
-***IMAGE GOES HERE***
-**Fig.1** Image of XXXXX. (SOURCE HERE)
+![Destination-Gym-Inside-Images6](https://github.com/user-attachments/assets/d49968dc-fc8e-4fc1-9ce4-928d0d5749f3)
+**Fig.1** Image of The inside of a physical location for one of the stores (The following app is **not** relevant to any physical stores. (https://destinationgym.co.uk/restore/)
 
 # Criteria A: Planning
 
 ## Problem definition (Client Identification)
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales consequat vulputate. Cras cursus vulputate massa non accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut a arcu ex. Proin in finibus nunc, in vehicula sapien. Duis finibus odio vitae dolor bibendum, in dignissim nisi suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae libero in sapien vulputate auctor.
-
-Praesent ullamcorper orci odio, nec dignissim ante blandit vitae. Sed consequat tempor vestibulum. Nullam mollis egestas faucibus. Praesent at orci lacinia, molestie metus et, tempor erat. Cras eget nisl lacus. Duis tincidunt nibh at nisl gravida tempus. Maecenas sit amet odio pellentesque, dignissim augue sit amet, cursus libero. Etiam quis ante eu mi accumsan lacinia. In et nisl sit amet mauris aliquam mattis at in sapien. Sed tempus bibendum erat ut blandit.
+My client is an upcomingv entreprentur and bodybuilding enthusiast with over a decade of exdperience in the gym who is looking to startup is own meal-prep company in Karuizawa. He will begin by 
 
 (see evidence of consultation in (AppendixA) SOMEWHERE IDFK)
 
@@ -22,6 +20,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales conseq
 ## Initial Interview with Client 
 
 ### Transcript of First Interview
+
+This interview was conducted and the transcript was compiled by AI, so beware of any discrepancies. The original audio file is sharable however. 
 
 Developer (Dev): All right, let’s start. This is our first interview for the project. You’re the owner of Fresh Bite Meal Prep, correct?
 
