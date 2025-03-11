@@ -338,6 +338,121 @@ Each table is configured to address the application's unique requirements.
 3.  Feedback Table: A separate feedback table ensures customer feedback can be stored and compared without influencing user or order data.
 4.  Food & Ingredients Tables: The separation of food items and inventory ingredients isolates menu listings from stock tracking to enable better inventory control. 
 
+Here is your **Login/Signup System (Success Criteria #2)** section formatted correctly in Markdown without altering any words:
+
+## Login/Signup System (Success Criteria #2)
+
+Next, keeping with my client’s requirements for user authentication and different levels of app-usage depending on the role (i.e. admin, customer), I implemented a secure login system that uses hashing to protect user’s passwords. So, instead of storing plaintext passwords in my user table of my database, I used a hashing function in the file `secure_password.py` to make sure that my users' credentials remain protected from breaches in the system.  
+
+### **From file: `secure_password.py`**  
+```python
+from passlib.hash import bcrypt  
+def encrypt_password(password):  
+    return bcrypt.hash(password)  
+
+def check_password(hashed_password, password):  
+    return bcrypt.verify(password, hashed_password)
+```
+I used the **Passlib bcrypt hashing algorithm** to hash my users' passwords. It is well-tested, secure, and, being that it is the **SHA-256 (Secure Hash Algorithm 256-bit)**, the most widely considered **strongest hash protection**, it offers me the **simplest and easiest way** to get the strongest security. The `encrypt_password()` function **hashes** the user's passwords before storing them, then the `check_password()` function **verifies the input password** against stored hashes when logging in. **Both these functions were used in my login functions several times.**  
+
+---
+
+## **User Authentication Process**  
+Now, onto the **user authentication process**.  
+
+### **From file: `project3.py`**  
+```python
+class LoginScreen(MDScreen):  
+    def try_login(self):  
+        username = self.ids.user.text.strip()  
+        password = self.ids.login_password.text.strip()  
+
+        if not username or not password:  
+            print("Username and password are required!")  
+            return  
+```
+For the **user authentication process**, when a user attempts to log in, the system retrieves the **username and password** from the input fields in the application’s GUI. If either field is **empty**, then an **error message** is displayed.  
+
+```python
+        query = "SELECT password, role FROM user WHERE username = ?"  
+        db = DatabaseManager(name=DB_PATH)  
+        results = db.search(query, (username,))  
+```
+This process also **requires queries**, which check the database for the **input username**, and if the username **exists**, then the corresponding **password (which is hashed)** along with the corresponding **role** is retrieved.  
+
+```python
+      if results:  
+            stored_hash, role = results[0]  
+            if check_password(stored_hash, password):  
+                print(f"User {username} logged in with role: {role}!")  
+                App.get_running_app().current_user = username  
+
+                if role == "admin":  
+                    self.manager.current = "admin_dashboard"  
+                elif role == "customer":  
+                    self.manager.current = "customer_home"  
+                else:  
+                    self.manager.current = "home"  
+                return  
+```
+If the user successfully **logs in**, the system:
+- **Validates the password** by checking it against the stored hash.
+- **Stores the current user** in the running app for reference.
+- **Redirects the user** to the appropriate dashboard based on their **role** (admin or customer).
+
+---
+
+## **User Registration Process**  
+For the **user registration process**, we have the `try_register(self)` function.  
+
+### **From file: `project3.py`**  
+```python
+class RegisterScreen(MDScreen):  
+    def try_register(self):  
+        username = self.ids.uname.text.strip()  
+        email = self.ids.email.text.strip()  
+        password = self.ids.passwd.text  
+        repassword = self.ids.passwd_check.text  
+```
+When a user registers, their **input username, email, and password** are retrieved.  
+
+```python
+        if not username or not email or not password:  
+            self.ids.uname.error = True  
+            self.ids.uname.helper_text = "All fields are required"  
+            return  
+
+        if password != repassword:  
+            self.ids.passwd.error = True  
+            self.ids.passwd.helper_text = "Passwords do not match"  
+            return  
+
+        if len(password) < 8:  
+            self.ids.passwd.error = True  
+            self.ids.passwd.helper_text = "Password must be at least 8 characters"  
+            return  
+```
+The system **validates** that:
+- **No fields are empty** (username, email, both password fields, including password confirmation).
+- **Passwords match** in each password box.
+- **Password length is at least 8 characters** for added security.
+- **Username and email are unique** and do not already exist in the database (as shown below):  
+
+```python
+try:  
+    db = DatabaseManager(name=DB_PATH)  
+    check_query = "SELECT * FROM user WHERE username = ? OR email = ?"  
+    results = db.search(check_query, (username, email))  
+
+    if results:  
+        self.ids.uname.error = True  
+        self.ids.uname.helper_text = "Username or Email already in use"  
+        return  
+```
+If validation **passes**, then the system:
+1. **Hashes the input password** before storing it in the database (using `encrypt_password()` from `secure_password.py`).
+2. **Adds the user** to the database with the **default role** `"customer"` (since only customers can register themselves).
+3. **Redirects the user back** to the login screen.
 
 ## Take Order (Create candle) (Success Criteria 2, 4)
 To meet the success criteria 4 about the creation of candle, I made three pages to take order and make candle successfully.
