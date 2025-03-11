@@ -6,16 +6,7 @@
 # Criteria A: Planning
 
 ## Problem definition (Client Identification)
-My client is an upcomingv entreprentur and bodybuilding enthusiast with over a decade of exdperience in the gym who is looking to startup is own meal-prep company in Karuizawa. He will begin by 
-
-(see evidence of consultation in (AppendixA) SOMEWHERE IDFK)
-
-## Proposed Solution
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales consequat vulputate. Cras cursus vulputate massa non accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut a arcu ex. Proin in finibus nunc, in vehicula sapien. Duis finibus odio vitae dolor bibendum, in dignissim nisi suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae libero in sapien vulputate auctor.
-
-
-## Tools of my solution
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales consequat vulputate. Cras cursus vulputate massa non accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut a arcu ex. Proin in finibus nunc, in vehicula sapien. Duis finibus odio vitae dolor bibendum, in dignissim nisi suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae libero in sapien vulputate auctor.
+Initially, the business wanted to rely on paper-based, manual operations to track orders, inventory, and financial transactions, which could result in a series of critical issues. Paper records often lead to missed orders, incorrect meals prepared, and delayed delivery. Additionally, tracking ingredient and meal inventory levels manually has been discovered to be error-prone, leading to shortages or overstocking, while maintaining financial records manually makes it hard to accurately compute profit and costs, thereby increasing the risk of mismanagement. This outdated system also poses security threats, as it is difficult to determine who must handle orders and financial information, and it lacks the ability to change menus, serving sizes, and seasonal ingredient options in a cost-effective way. Thus, I was approached by the client as the developer of their very own Fresh Bite Meal Prep application, which would allow customers to order online while also solving all of the issues that come with manual business management by streamlining the administration process through the use of one centralized and secure application. 
 
 ## Initial Interview with Client 
 
@@ -83,6 +74,11 @@ Great. I have enough information to move forward. I’ll put together a detailed
 **Client:**  
 Awesome! Looking forward to it.
 
+## Proposed Solution
+Considering the client's requirements, I believe a Kivy-based GUI (Graphical User Interface) application is the ideral choice because it provies a user-friendly, visually appealing interface (if used correctly) that is easy for non-technical usrs to navigate. Under the hood, the application will consist of an SQL Database to store all the essential information such as registered users with role-based access (customer and administrator), order details, and stock levels (for ingredients). Instead of relying on human-prone paper-based (manual) error, the app will handle all of this automatically, digitally recording every change in orders and inventory so supply of ingredients are always curreant and quantities of prepared meals are always correctly accounted for. The system will then have a designated login page that has a separate admin-login section so users can be directed to the correct page depending on who they are, whether they are a customer, an employee, etc. Customers will be able to view the items on sale, view information such as ingredients, calories and macroes, and be able to place orders, while admins will be able to view current ongoing orders, monitor and change stock and prepared meal quantities, and mark orders as complete. To continue with orders, the orders will be able to be monitored in real-time, with customers able to see estimated delivery times and employees/admins able to see this too allowing delivery drivers to be assisted in optiomizing routes and reducing delays. I would design this appliation using Python using an OOP (Object-Oriented Programming) approach, allowing the app to be easily scalable and modular in case of any new client requests down the line. 
+
+## Tools of my solution
+By considering the needs of my client, I decided to use a Kivy-based GUI (Graphical User Interface) that operates as a mobile or desktop solution, which eliminates the need for an internet connection to initialize while offering robust security to guard against application hijackings. A GUI application (especially using Kivy) provides a visually intuitive user interface making it accessible to users who may not be familiar with command-line operations. I chose Python as the programming language of choice due to its versatility and extensive range of libraries and frameworks ,which allows for the development of user interfaces, database management/interfacing, and backend functionality within a single language. Python’s widespread usage, being the most utilized coding language across the globe, allows the application to be maintained and enhanced by other programmers in the future. For data storage, an SQLite database is my relational database management system choice of centralized storage, as it works seamlessly with Python applications that use local data sources. The native hash-checking features also add to the security, performance and reliability that surpasses thoe of other file-based systems (such as a .csv file which is remarkably insecure), Using this combination of tools—Gui, Python and SQL—one is able to achieve a secure, efficient and easy-to-use solution that meets the clients needs today and has the ability to expand in the future
 
 ## Success Criteria
 
@@ -115,9 +111,10 @@ Now, based on the initial interview I compiled a set of success criteria in orde
 ## System Diagram
 ####SYSTEM DIAGRAM***
 
-**Fig.2** shows the system diagram of the GUI application. I used Macbook Air computer as the development tool and Pycharm for the coding editor. 
-Inside the Pycharm, I have the `project.py`, `project_lib.py`, `project.kv`, and `project.db` files and database.
-Inside the database of `project.db` which uses sqlite3, I have table users, inventory, orders, order_history, purchases and ledger.
+**Fig.2** shows the system diagram of the GUI application. I used Macbook Air computer as the development tool and Visual Studio Code as my designated coding editor. 
+
+Inside the Visual Studio Code, I have the `project_3.py`, `secure_password.py`, `my_li .kv`, and `main_db.sql` files and database.
+Inside the database of `main_db.sql` which uses sqlite3, I have table users, food_items, inventory, orders, and purchases. 
 
 ## ER Diagram
 ![ER_diagram.jpg](Project_md_image%2FER_diagram.jpg)
