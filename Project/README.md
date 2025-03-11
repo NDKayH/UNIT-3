@@ -588,6 +588,110 @@ This system **fully meets Success Criteria #3**, ensuring that the **administrat
 
 
 
+## Mobile Optimization and Customer Feedback System (User Experience) [Success Criteria] #5
+
+To ensure that the application is **optimized for mobile users** primarily and delivers a **user-friendly experience**, I added features such as **dynamic screen scaling** and **intuitive "idiot-proof" navigation**, along with a **dedicated customer feedback screen** that allows any user to submit feedback directly from within the app. This feedback can then be viewed by administrators.
+
+Like the success criteria suggest, this addresses several issues:
+
+- **“An unresponsive, poor unintuitive application decreases user satisfaction”**  
+- **“Lack of a formal feedback system, because of which the company is unable to address customer problems effectively”**  
+
+---
+
+## **Mobile Optimization**
+Firstly, for the **user experience**, I applied **responsive design principles** and optimized my GUI’s **layout for different mobile screen sizes** for maximum compatibility.
+
+### **From file: `project3.py`**
+```python
+Window.size = (450, 950)
+```
+With the default window size being **450x950 pixels**, I believe that it is a **good middle ground** between mobile phone screen sizes and aspect ratios, allowing for **maximum compatibility** with UI elements **not appearing disproportionate or distorted**. 
+
+I also used **KivyMD components** to incorporate this **more modern design philosophy**:
+```python
+from kivymd.app import MDApp
+from kivymd.uix.screen import MDScreen
+```
+This was because **KivyMD** automatically adjusts UI components to look **clean and scalable**, and the **Material Design principles** provide **better usability**, making the app more intuitive to use.
+
+Additionally, I used **ScreenManager** (imported from Kivy) to make **switching between screens more seamless**.
+
+---
+
+## **Customer Feedback System**
+To ensure that customers can **submit feedback efficiently**, I created a **dedicated feedback screen** where customers can input their concerns, and administrators can review and address them.
+
+### **From file: `project3.py`**
+```python
+class FeedbackScreen(MDScreen):
+   def submit_feedback(self):
+       username = getattr(self.manager, "current_customer", "anonymous")
+       feedback_text = self.ids.feedback_input.text.strip()
+
+       if not feedback_text:
+           print("Feedback cannot be empty")
+           return
+
+       db = DatabaseManager(name=DB_PATH)
+       query = "INSERT INTO feedback (customer_username, feedback_text) VALUES (?, ?)"
+       db.run_save(query, (username, feedback_text))
+
+       print("Feedback submitted")
+       self.ids.feedback_input.text = ""
+```
+### **How it Works**
+1. A user enters their feedback into the text field.  
+2. The system **validates** that **no empty feedback** was submitted, preventing blank responses.  
+3. The feedback is **stored in the SQLite3 database (`main_db.sql`)** with the corresponding username.  
+4. After submission, the **text field clears automatically** for a seamless experience.  
+
+---
+
+## **Administrator Feedback Review**
+On the **admin’s side**, feedback is displayed **in a structured format** for easy review.
+
+### **From file: `project3.py`**
+```python
+class AdminFeedbackScreen(MDScreen):
+    def on_enter(self):
+        self.show_table_feedback()
+
+    def show_table_feedback(self):
+        db = DatabaseManager(name=DB_PATH)
+        feedbacks = db.search("SELECT id, customer_username, feedback_text FROM feedback")
+
+        if hasattr(self, 'data_table'):
+            self.remove_widget(self.data_table)
+
+        table_rows = []
+        for fb_id, customer, text in feedbacks:
+            table_rows.append((str(fb_id), customer, text))
+
+        self.data_table = MDDataTable(
+            size_hint=(0.9, 0.8),
+            pos_hint={"center_x": 0.5, "center_y": 0.5},
+            column_data=[("ID", dp(30)), ("Customer", dp(30)), ("Feedback", dp(60))],
+            row_data=table_rows
+        )
+        self.add_widget(self.data_table)
+```
+### **How it Works for Admins**
+- **Feedback is automatically loaded** when the page is opened.  
+- The feedback is displayed using a **structured format (`MDDataTable`)**, making it **organized and easy to navigate**.  
+- Admins can **review all customer input in one place**, ensuring that issues are addressed efficiently.  
+
+---
+
+## **Impact of These Features**
+By implementing **mobile optimization and a structured feedback system**, my application:
+- **Enhances user experience** via simple and intuitive navigation.
+- **Decreases customer frustration** with an organized, responsive interface.
+- **Improves business decision-making** by providing a systematic framework for capturing and addressing customer complaints.
+- **Increases engagement** as users feel their feedback is valued and addressed. 
+
+
+
 
 
 ### TakeOrderScreen
