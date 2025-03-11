@@ -458,6 +458,123 @@ If validation **passes**, then the system:
 To meet the success criteria 4 about the creation of candle, I made three pages to take order and make candle successfully.
 This order process divided into three pages `TakeOrderScreen`, `CheckScreen`, `SuccessOrderScreen`.
 
+Here is your **Inventory Management Dashboard (Success Criteria #3)** section, formatted properly in **Markdown** without changing your words:
+
+## Inventory Management Dashboard (Success Criteria #3)
+
+Next requirements are an **administrator’s dashboard** that allows for **comprehensive inventory management**. Thus, in my app, I designed an **admin dashboard** that provides the employee with an **overview of ingredient inventory**, allowing the administrator to **update inventory levels in real-time**.  
+
+---
+
+### Database Setup for Inventory Tracking:
+
+To **store and manage** the ingredient inventory data, I created a **dedicated table** within my `main_db.sql` **SQLite3 database**, as seen above in my database creation section. This ensures that the table **exists upon app startup** and it contains:  
+✔ The **names** of the ingredients  
+✔ The **quantity** available in stock  
+
+The reason for this inclusion was to remain **faithful to the client's goal** of ensuring that **preventable shortages and oversupply issues** for inventory are **mitigated** by a more **intuitive and partly automated system** of inventory management.  
+
+In my **orders table**, I also included an added section for **estimated preparation and delivery arrival time**, which is also something **available and viewable for the customer**, ensuring **better tracking of inventory usage** over time.  
+
+```python
+try:
+    db.run_save("ALTER TABLE orders ADD COLUMN estimated_time INTEGER")
+except Exception as e:
+    print("Estimated_time column might already exist:", e)
+```
+Here, I chose to use a **`try:` statement** and an **SQL query** for the addition of the `estimated_time` column.  
+
+**Reasoning:**  
+- During the process of making the **order tracking screen**, I had already completed my `initialize_orders_database()` function.  
+- To **prevent any issues with existing data retention**, this approach **ensured no data loss**.
+- Instead of modifying the original database schema, I **appended the column dynamically**, though this **may have been a non-issue**.
+
+---
+
+## **Administrator Inventory Management Panel**  
+
+The **admin panel** includes an **ingredient inventory management screen**, where **admins can**:  
+✔ **View** current stock levels  
+✔ **Update** ingredient quantities  
+✔ **Manage** stock adjustments in real-time  
+
+### **From file: `project3.py`**
+```python
+class InventoryManagementScreen(MDScreen):
+    def on_enter(self):
+        self.load_inventory()
+
+    def load_inventory(self):
+        db = DatabaseManager(name=DB_PATH)
+        query = "SELECT id, name, quantity FROM ingredients"
+        items = db.search(query)
+        self.ids.inventory_list.clear_widgets()
+
+        for item in items:
+            item_id, name, quantity = item
+            list_item = OneLineListItem(
+                text=f"{name}: {quantity}",
+                on_release=lambda x, iid=item_id, qty=quantity, iname=name: self.edit_item(iid, qty, iname)
+            )
+            self.ids.inventory_list.add_widget(list_item)
+```
+
+### **How This Works:**
+✔ **Retrieves** all **ingredients and their stock levels** from the database.  
+✔ **Displays** them dynamically in the **UI** (`InventoryManagementScreen`).  
+✔ Allows **admins to edit stock levels** when selecting an item in the UI.  
+
+---
+
+## **Editing Inventory in Real-Time**  
+Admins can **increase or decrease stock levels** based on the **current supply levels** and the **periodic restocks** on a **bi-monthly basis**.
+
+### **From file: `project3.py`**
+```python
+class UpdateInventoryScreen(MDScreen):
+    item_id = NumericProperty(0)
+    current_quantity = NumericProperty(0)
+    item_name = ""
+
+    def update_quantity(self):
+        new_qty_str = self.ids.new_quantity.text.strip()
+        try:
+            new_qty = int(new_qty_str)
+        except ValueError:
+            print("Invalid quantity")
+            return
+
+        db = DatabaseManager(name=DB_PATH)
+        query = "UPDATE ingredients SET quantity = ? WHERE id = ?"
+        db.run_save(query, (new_qty, self.item_id))
+
+        print(f"Updated {self.item_name} (id: {self.item_id}) to quantity {new_qty}")
+        self.manager.get_screen("inventory_management").load_inventory()
+        self.manager.current = "inventory_management"
+```
+
+### **How This Works:**  
+✔ The **admin inputs a new quantity** for an ingredient.  
+✔ **Data validation** ensures **only valid numbers** are entered.  
+
+```python
+except ValueError:
+    print("Invalid quantity")
+    return
+```
+✔ The **database is updated** in real-time, preventing **incorrect stock tracking**.  
+✔ The inventory list **refreshes automatically**.  
+
+---
+
+## **Preventing Overstock & Shortages**  
+By integrating this **inventory management system**, my application **and the administrator** can:  
+
+✔ **Track inventory levels dynamically**  
+✔ **Prevent overstocking** by ordering only necessary ingredients  
+✔ **Prevent shortages** by allowing proactive restocking  
+
+This system **fully meets Success Criteria #3**, ensuring that the **administrator’s dashboard provides real-time inventory control** for better management of **ingredients and fully prepared meals**.
 
 
 
