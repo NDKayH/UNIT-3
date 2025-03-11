@@ -251,88 +251,84 @@ def initialize_user_database():
    """
 ```
 
-I created 6 tables in the case of these tables are not existed.
+In addition to the user table, I created several other tables in case they did not exist:
 
-**users**
-```.py
-        query_users = """CREATE TABLE if not exists users(
-                id INTEGER PRIMARY KEY,
-                username VARCHAR(30),
-                hash TEXT);"""
-        db_connection.run_query(query_users)
+## Food (Items):
 
+```python
+def initialize_food_database():
+   db = DatabaseManager(name=DB_PATH)
+   create_table_query = """
+       CREATE TABLE IF NOT EXISTS food_items (
+           id INTEGER PRIMARY KEY AUTOINCREMENT,
+           name TEXT NOT NULL,
+           description TEXT,
+           price REAL,
+           image_path TEXT
+       );
+   """
+   db.run_save(create_table_query)
+   check_query = "SELECT name FROM sqlite_master WHERE type='table' AND name='food_items'"
+   table_exists = db.search(check_query)
+   if table_exists:
+       columns = db.search("PRAGMA table_info(food_items)")
+       column_names = [col[1] for col in columns]
+       if "image_path" not in column_names:
+           try:
+               db.run_save("ALTER TABLE food_items ADD COLUMN image_path TEXT")
+           except Exception as e:
+               print("Error adding image_path column:", e)
 ```
 
-**inventory**
-```.py
-    query_inventory ="""CREATE TABLE if not exists inventory(
-                 id INTEGER PRIMARY KEY,
-                 name text,
-                 genre text,
-                 description text,
-                 purchase_price int,
-                 selling_price int,
-                 amount int);"""
-    b_connection.run_query(query_inventory)
+## Orders:
+
+```python
+def initialize_orders_database():
+   db = DatabaseManager(name=DB_PATH)
+   query = """
+       CREATE TABLE IF NOT EXISTS orders (
+           id INTEGER PRIMARY KEY AUTOINCREMENT,
+           customer_username TEXT NOT NULL,
+           order_details TEXT NOT NULL,
+           status TEXT NOT NULL,
+           address TEXT,
+           bank_info TEXT,
+           estimated_time INTEGER
+       );
+   """
+   db.run_save(query)
 ```
 
-**orders**
-```.py
-query_orders="""CREATE TABLE if not exists orders(
-                 id INTEGER PRIMARY KEY,
-                 staff_id int,
-                 model int,
-                 wax int,
-                 date TEXT,
-                 scent int,
-                 package TEXT,
-                 amount INT,
-                 price INT,
-                 total_price INT
-                 );
- db_connection.run_query(query_orders)
-"""
+## Feedback (Form):
+
+```python
+def initialize_feedback_database():
+   db = DatabaseManager(name=DB_PATH)
+   query = """
+       CREATE TABLE IF NOT EXISTS feedback (
+           id INTEGER PRIMARY KEY AUTOINCREMENT,
+           customer_username TEXT NOT NULL,
+           feedback_text TEXT NOT NULL
+       );
+   """
+   db.run_save(query)
 ```
 
-**purchases**
-```.py
-    query_purchases="""
-    CREATE TABLE if not exists purchases(
-                 id INTEGER PRIMARY KEY,
-                 staff_id INT,
-                 date TEXT,
-                 material TEXT,
-                 amount INT,
-                 price INT,
-                 total INT);"""                
-    db_connection.run_query(query_purchases)
-```
+## Inventory (Ingredients):
 
-**order_hisotry**
-```.py
-    query_order_hisotry="""CREATE TABLE if not exists order_history(
-                 id INTEGER PRIMARY KEY,
-                 staff_id INT,
-                 date TEXT,
-                 model int,
-                 wax int,
-                 scent int,
-                 package TEXT,
-                 amount int);
+```python
+def initialize_ingredients_database():
+   db = DatabaseManager(name=DB_PATH)
+   query = """
+       CREATE TABLE IF NOT EXISTS ingredients (
+           id INTEGER PRIMARY KEY AUTOINCREMENT,
+           name TEXT NOT NULL,
+           quantity INTEGER NOT NULL
+       );
+   """
+   db.run_save(query)
 ```
-
-**ledger**
-```.py
-    query_ledger="""CREATE TABLE if not exists ledger(
-                 id INTEGER PRIMARY KEY,
-                 staff_id INT,
-                 date TEXT,
-                 description TEXT,
-                 price INT,
-                 balance int);"""
-    db_connection.run_query(query_ledger)
 ```
-
 Also, to calculate the balance, I created the trigger in the conosole of the database.
 ```.py
 -- trigger
@@ -349,6 +345,8 @@ BEGIN
     WHERE id = NEW.id;
 END;
 ```
+As you can see, each table initializer uses `my_lib.py` in some capacity when starting my application, each using the `run_save(query)` function. 
+
 This query happens every time the table `ledger` is updated.
 I set the for loop which calculates the sum of the price column of the table.
 The trigger consider the table `ledger` as `prev`, and define the id by the newer date or the same date as previous row to prevent the miss order allocation.
