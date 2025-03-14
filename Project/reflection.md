@@ -1,20 +1,20 @@
 
 # Repo Unit 3
 
-## reflection.md
+## reflection.md 
 
 ### Q1. What was the most proud moment for you during this project?
 
-My most proud moment was probably when I was able to get my app to run with extremely minimal bugs or errors. It felt great to see my database updating in real time, and my functions working exactly as intended.
+My most proud moment was probably when I was able to get my app to run with extremely minimal bugs or errors. It felt good to have my database being updated in real time, and my functions work as intended. 
 
 ### Q1. + 2 What worked well this time?
 
-I believe my technical know-how was a key factor in this project. I felt confident using the skills I acquired in class, especially over the past couple of months. I approached the coding aspect of the project with a readiness to write my Kivy file and create Classes for each screen using an OOP approach, which proved to be very effective.
+I think my technical know-how worked well on this project. I felt pretty confident in the skills I learned during class time especially over the course of the past couple months. I think I came into the coding-aspect of the project actually confident and ready to write out my Kivy file and my Classes for each screen using OOP. 
 
-### Q3. What will you do differently for Unit 4 / IA?
+### Q3. What will you do differently for Unit 4 / IA
 
-For Unit 4/IA, I plan to focus more on documentation. After submitting this project and receiving feedback, I realized I was missing the bigger picture. Since the IA follows a very similar rubric, I will ensure that I align my documentation process with the rubric requirements from the very beginning of the project. This will help me avoid missing any critical elements during submission.
+I would do my documentation differently. After the following class after submissions and once I received my feedback, I felt like I was missing the bigger picture with these projects: It is essentially an IA, and follows a very similar if not the same rubric, and with this in mind I should try as much as possible to stick to the rubric starting as early on in my project process as possible to ensure I leave nothing missing when I submit my project. 
 
-### Q4. What do you need help with?
+### Q4. What do you need help with? 
 
-I would appreciate help with documentation and receiving feedback before the final submission. I also recognize that it’s my responsibility to seek feedback ahead of project deadlines, and I plan to be more proactive in that regard.
+I think something I need help with is with documentation, and getting feedback before submission. However, I do recognize that it is also in part my responsibility to perhaps ask for feedback ahead of the project deadline.
